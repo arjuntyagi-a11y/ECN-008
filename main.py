@@ -135,7 +135,7 @@ st.error(f"Overdue ECNs: {len(overdue)}")
 st.subheader("Open Points by Team")
 fig1, ax1 = plt.subplots()
 filtered_df["Open Points-Team"].value_counts().plot(
-    kind="bar",
+    kind="pie",
     ax=ax1
 )
 st.pyplot(fig1)
@@ -185,9 +185,9 @@ st.dataframe(
     filtered_df[["ECN/PCN No", "ECN Title / Description", "Dept",
        "Details of changes required(Before)",
        "Details of changes required(After)", "Reason for Change",
-       "Affected Area / Equipment", "Document Ref"]],
+       "Affected Area / Equipment","Open Points", "Document Ref"]],
     column_config={
-        "ECR Link": st.column_config.LinkColumn(
+        "Document Ref": st.column_config.LinkColumn(
             "Open ECR",
             display_text="View"
         )
