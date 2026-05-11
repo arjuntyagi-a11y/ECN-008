@@ -76,7 +76,7 @@ df.columns = df.columns.str.strip()
 df = df.fillna("")
 
 # Convert filter columns to string
-filter_cols = ["Dept", "Status", "Affected Area / Equipment","Heads Approval Pending", "Open Points-Team"]
+filter_cols = ["Dept", "Status", "Affected Area / Equipment","Approval Pending", "Open Points-Team"]
 
 for col in filter_cols:
     df[col] = df[col].astype(str)
@@ -140,7 +140,7 @@ filtered_df["Open Points-Team"].value_counts().plot(
 )
 
 st.subheader("Approval Pending")
-filtered_df["Heads Approval Pending"].value_counts().plot(
+filtered_df["Approval Pending"].value_counts().plot(
     kind="pie",
     ax=ax2
 )
