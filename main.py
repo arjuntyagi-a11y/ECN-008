@@ -62,6 +62,16 @@ import matplotlib.pyplot as plt
 
 # Load Excel
 df = pd.read_excel("Change Management Tracker (1).xlsx")
+df.columns = df.columns.str.strip()
+
+# Replace blanks with empty string
+df = df.fillna("")
+
+# Convert filter columns to string
+filter_cols = ["Dept", "Status", "Affected Area / Equipment"]
+
+for col in filter_cols:
+    df[col] = df[col].astype(str)
 
 # Title
 st.title("Change Management Dashboard")
@@ -76,6 +86,11 @@ status = st.sidebar.selectbox(
     "Status",
     ["All"] + list(df["Status"].dropna().unique())
 )
+area = st.sidebar.selectbox(
+    "Equipment Owner",
+    ["All"] + sorted(df["Affected Area / Equipment"].unique())
+)
+
 
 # Apply filters
 filtered_df = df.copy()
