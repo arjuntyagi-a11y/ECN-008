@@ -109,7 +109,7 @@ if filtered_df.empty:
 st.metric("Total ECNs", len(df))
 st.metric("ECNs Open", len(df[df["ECN Status"]=="Open"]))
 st.metric("ECNs ongoing Approval ", len(df[df["ECN Status"]=="ECR-Sign off Ongoing"]))
-st.metric("ECNs upcoming ", len(df[df["ECN Status"]=="Upcoming"]))
+st.metric("ECNs upcoming ", len(df[df["ECN Status"]=="—"]))
 st.metric("ECNs closed ", len(df[df["ECN Status"]=="closed"]))
 
 filtered_df["Target Date"] = pd.to_datetime(
