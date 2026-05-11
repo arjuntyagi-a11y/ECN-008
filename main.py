@@ -76,7 +76,7 @@ df.columns = df.columns.str.strip()
 df = df.fillna("")
 
 # Convert filter columns to string
-filter_cols = ["Dept", "Status", "Affected Area / Equipment"]
+filter_cols = ["Dept", "Status", "Affected Area / Equipment","Heads Approval Pending", "Open Points-Team"]
 
 for col in filter_cols:
     df[col] = df[col].astype(str)
