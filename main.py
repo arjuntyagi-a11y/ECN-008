@@ -19,6 +19,14 @@ print("Closed ECNs:", len(df[df["Delay Status"]=="Closed"]))
 print("Delayed ECNs:", len(df[df["Delay Status"]=="Delayed"]))
 
 import matplotlib.pyplot as plt
+df["Open Points-Team"].value_counts().plot(kind="pie", color="Red")
+plt.title("ECN by Department")
+plt.ylabel("Count")
+plt.show()
+df["Approval Pending"].value_counts().plot(kind="bar", color="black")
+plt.title("ECN by Department")
+plt.ylabel("Count")
+plt.show()
 
 # ECN by status
 df["Status"].value_counts().plot(kind="bar", color="Orange")
@@ -75,7 +83,7 @@ for col in filter_cols:
 
 # Title
 st.title("Change Management Dashboard")
-st.caption("Live tracker for Engineering Change Notices")
+st.caption("Live tracker for Engineering Change Notices and Process Changes")
 st.sidebar.title("Filters")
 
 dept = st.sidebar.selectbox(
