@@ -140,7 +140,6 @@ filtered_df["Open Points-Team"].value_counts().plot(
 )
 
 st.subheader("Approval Pending")
-fig2, ax2 = plt.subplots()
 filtered_df["Heads Approval Pending"].value_counts().plot(
     kind="pie",
     ax=ax2
@@ -152,11 +151,11 @@ st.pyplot(fig)
 # ------------------------
 st.subheader("Status")
 
-fig2, ax2 = plt.subplots()
+fig2, ax3 = plt.subplots()
 filtered_df["Status"].value_counts().plot(
     kind="pie",
     autopct="%1.1f%%",
-    ax=ax2
+    ax=ax3
 )
 ax1.set_ylabel("")
 st.pyplot(fig2)
@@ -166,10 +165,10 @@ st.pyplot(fig2)
 # ------------------------
 st.subheader("ECN by Department")
 
-fig3, ax3 = plt.subplots()
+fig3, ax4 = plt.subplots()
 filtered_df["Dept"].value_counts().plot(
     kind="bar",
-    ax=ax3
+    ax=ax4
 )
 st.pyplot(fig3)
 
@@ -178,8 +177,8 @@ st.pyplot(fig3)
 # ------------------------
 st.subheader("ECN Owners")
 
-fig4, ax4 = plt.subplots()
-filtered_df["Affected Area / Equipment"].value_counts().head(10).plot(kind="pie",color="brown", ax=ax3)
+fig4, ax5 = plt.subplots()
+filtered_df["Affected Area / Equipment"].value_counts().head(10).plot(kind="pie",color="brown", ax=ax5)
 st.pyplot(fig4)
 # ------------------------
 # Full Table
