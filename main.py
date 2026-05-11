@@ -133,12 +133,19 @@ overdue = filtered_df[
 st.error(f"Overdue ECNs: {len(overdue)}")
 
 st.subheader("Open Points by Team")
-fig1, ax1 = plt.subplots()
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 filtered_df["Open Points-Team"].value_counts().plot(
     kind="pie",
     ax=ax1
 )
-st.pyplot(fig1)
+
+st.subheader("Approval Pending")
+fig2, ax2 = plt.subplots()
+filtered_df["Heads Approval Pending"].value_counts().plot(
+    kind="pie",
+    ax=ax2
+)
+st.pyplot(fig)
 
 # ------------------------
 # Plot 1: Status Pie Chart
@@ -179,7 +186,7 @@ st.pyplot(fig4)
 # ------------------------
 df = pd.read_excel("Change Management Tracker (1).xlsx")
 
-st.subheader("ECR Table")
+st.subheader("ECR Detailed Table")
 
 st.dataframe(
     filtered_df[["ECN/PCN No", "ECN Title / Description", "Dept",
