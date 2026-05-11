@@ -132,40 +132,49 @@ overdue = filtered_df[
 
 st.error(f"Overdue ECNs: {len(overdue)}")
 
+st.subheader("Open Points by Team")
+fig1, ax1 = plt.subplots()
+filtered_df["Open Points-Team"].value_counts().plot(
+    kind="bar",
+    color="Orange"
+    ax=ax1
+)
+st.pyplot(fig1)
+
 # ------------------------
 # Plot 1: Status Pie Chart
 # ------------------------
 st.subheader("Status")
 
-fig1, ax1 = plt.subplots()
+fig2, ax2 = plt.subplots()
 filtered_df["Status"].value_counts().plot(
     kind="pie",
     autopct="%1.1f%%",
-    ax=ax1
+    ax=ax2
 )
 ax1.set_ylabel("")
-st.pyplot(fig1)
+st.pyplot(fig2)
 
 # ------------------------
 # Plot 2: Department Bar
 # ------------------------
 st.subheader("ECN by Department")
 
-fig2, ax2 = plt.subplots()
+fig3, ax3 = plt.subplots()
 filtered_df["Dept"].value_counts().plot(
     kind="bar",
-    ax=ax2
+    ax=ax3
 )
-st.pyplot(fig2)
+st.pyplot(fig3)
 
 # ------------------------
 # Plot 3: Priority
 # ------------------------
 st.subheader("ECN Owners")
 
-fig3, ax3 = plt.subplots()
+fig4, ax4 = plt.subplots()
 filtered_df["Affected Area / Equipment"].value_counts().head(10).plot(kind="pie",color="brown", ax=ax3)
-st.pyplot(fig3)
+st.pyplot(fig4)
 # ------------------------
 # Full Table
 # ------------------------
