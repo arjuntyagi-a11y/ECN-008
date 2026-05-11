@@ -75,6 +75,7 @@ for col in filter_cols:
 
 # Title
 st.title("Change Management Dashboard")
+st.caption("Live tracker for Engineering Change Notices")
 st.sidebar.title("Filters")
 
 dept = st.sidebar.selectbox(
@@ -100,6 +101,9 @@ if dept != "All":
 
 if status != "All":
     filtered_df = filtered_df[filtered_df["Status"] == status]
+if filtered_df.empty:
+    st.warning("⚠️ No ECNs found for the selected filters.")
+    st.stop()
 
 # KPI metrics
 st.metric("Total ECNs", len(df))
@@ -161,7 +165,7 @@ df = pd.read_excel("Change Management Tracker (1).xlsx")
 st.subheader("ECR Table")
 
 st.dataframe(
-    filtered_df[["ECN/PCN No", "ECN Title / Description", "Dept", "Change Required\n",
+    filtered_df[["ECN/PCN No", "ECN Title / Description", "Dept",
        "Details of changes required(Before)",
        "Details of changes required(After)", "Reason for Change",
        "Affected Area / Equipment", "Document Ref"]],
