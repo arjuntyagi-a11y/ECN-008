@@ -136,7 +136,6 @@ st.subheader("Open Points by Team")
 fig1, ax1 = plt.subplots()
 filtered_df["Open Points-Team"].value_counts().plot(
     kind="bar",
-    color="Orange"
     ax=ax1
 )
 st.pyplot(fig1)
