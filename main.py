@@ -98,6 +98,14 @@ status = st.sidebar.selectbox(
 area = st.sidebar.selectbox(
     "Equipment Owner",
     ["All"] + sorted(df["Affected Area / Equipment"].unique())
+area = st.sidebar.selectbox(
+    "Approval Pending",
+    ["All"] + sorted(df["Approval Pending"].unique())
+    
+area = st.sidebar.selectbox(
+    "Open Points-Team",
+    ["All"] + sorted(df["Open Points-Team"].unique())
+    
 )
 
 
@@ -132,18 +140,18 @@ overdue = filtered_df[
 
 st.error(f"Overdue ECNs: {len(overdue)}")
 
-st.subheader("Open Points by Team")
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 filtered_df["Open Points-Team"].value_counts().plot(
-    kind="pie",
+    kind="bar",
     ax=ax1
 )
+ax1.set_title("Open Points by Team")
 
-st.subheader("Approval Pending")
 filtered_df["Approval Pending"].value_counts().plot(
-    kind="pie",
+    kind="bar",
     ax=ax2
 )
+ax2.set_title("Approval Pending")
 st.pyplot(fig)
 
 # ------------------------
