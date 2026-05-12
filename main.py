@@ -100,11 +100,11 @@ area = st.sidebar.selectbox(
     ["All"] + sorted(df["Affected Area / Equipment"].unique())
     
     )
-area = st.sidebar.selectbox(
+approval = st.sidebar.selectbox(
     "Approval Pending",
     ["All"] + sorted(df["Approval Pending"].unique())
     )
-area = st.sidebar.selectbox(
+Open Points = st.sidebar.selectbox(
     "Open Points-Team",
     ["All"] + sorted(df["Open Points-Team"].unique())
     
@@ -119,6 +119,12 @@ if dept != "All":
 
 if status != "All":
     filtered_df = filtered_df[filtered_df["Status"] == status]
+if area != "All":
+    filtered_df = filtered_df[filtered_df["Affected Area / Equipment"] == area]
+if approval != "All":
+    filtered_df = filtered_df[filtered_df["Approval Pending"] == approval]
+if Open Points != "All":
+    filtered_df = filtered_df[filtered_df["Open Points-Team"] == Open Points]
 if filtered_df.empty:
     st.warning("⚠️ No ECNs found for the selected filters.")
     st.stop()
@@ -142,7 +148,7 @@ overdue = filtered_df[
 
 st.error(f"Overdue ECNs: {len(overdue)}")
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 15))
 filtered_df["Open Points-Team"].value_counts().plot(
     kind="bar",
     ax=ax1
