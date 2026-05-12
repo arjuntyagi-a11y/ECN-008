@@ -122,7 +122,7 @@ if dept != "All":
 if status != "All":
     filtered_df = filtered_df[filtered_df["Status"] == status]
 if area != "All":
-    filtered_df = filtered_df[filtered_df[["Affected Area / Equipment"] == area]
+    filtered_df = filtered_df[filtered_df["Affected Area / Equipment"] == area]
 if approval != "All":
     filtered_df = filtered_df[filtered_df["Approval Pending"] == approval]
 if Open Points != "All":
