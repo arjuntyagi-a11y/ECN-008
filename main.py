@@ -125,7 +125,7 @@ if area != "All":
     filtered_df = filtered_df[filtered_df["Affected Area / Equipment"] == area]
 if approval != "All":
     filtered_df = filtered_df[filtered_df["Approval Pending"] == approval]
-if Open Points != "All":
+if Open!= "All":
     filtered_df = filtered_df[filtered_df["Open Points-Team"] == Open]
 if filtered_df.empty:
     st.warning("⚠️ No ECNs found for the selected filters.")
