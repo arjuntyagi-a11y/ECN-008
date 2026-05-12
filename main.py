@@ -98,10 +98,12 @@ status = st.sidebar.selectbox(
 area = st.sidebar.selectbox(
     "Equipment Owner",
     ["All"] + sorted(df["Affected Area / Equipment"].unique())
+    
+    )
 area = st.sidebar.selectbox(
     "Approval Pending",
     ["All"] + sorted(df["Approval Pending"].unique())
-    
+    )
 area = st.sidebar.selectbox(
     "Open Points-Team",
     ["All"] + sorted(df["Open Points-Team"].unique())
