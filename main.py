@@ -80,6 +80,8 @@ filter_cols = ["Dept", "Status", "Affected Area / Equipment","Approval Pending",
 
 for col in filter_cols:
     df[col] = df[col].astype(str)
+    
+
 
 # Title
 st.title("Change Management Dashboard")
@@ -104,7 +106,7 @@ approval = st.sidebar.selectbox(
     "Approval Pending",
     ["All"] + sorted(df["Approval Pending"].unique())
     )
-Open Points = st.sidebar.selectbox(
+Open = st.sidebar.selectbox(
     "Open Points-Team",
     ["All"] + sorted(df["Open Points-Team"].unique())
     
@@ -120,11 +122,11 @@ if dept != "All":
 if status != "All":
     filtered_df = filtered_df[filtered_df["Status"] == status]
 if area != "All":
-    filtered_df = filtered_df[filtered_df["Affected Area / Equipment"] == area]
+    filtered_df = filtered_df[filtered_df[["Affected Area / Equipment"] == area]
 if approval != "All":
     filtered_df = filtered_df[filtered_df["Approval Pending"] == approval]
 if Open Points != "All":
-    filtered_df = filtered_df[filtered_df["Open Points-Team"] == Open Points]
+    filtered_df = filtered_df[filtered_df["Open Points-Team"] == Open]
 if filtered_df.empty:
     st.warning("⚠️ No ECNs found for the selected filters.")
     st.stop()
