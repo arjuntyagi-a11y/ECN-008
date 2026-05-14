@@ -150,7 +150,7 @@ overdue = filtered_df[
 
 st.error(f"Overdue ECNs: {len(overdue)}")
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 20))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 filtered_df["Open Points-Team"].value_counts().plot(
     kind="bar",
     ax=ax1,
