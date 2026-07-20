@@ -87,6 +87,10 @@ for col in filter_cols:
 st.title("Change Management Dashboard")
 st.caption("Live tracker for Engineering Change Notices and Process Changes")
 st.sidebar.title("Filters")
+Year = st.sidebar.selectbox(
+    "Year",
+    ["All"] + list(df["Year"].dropna().unique())
+)
 
 dept = st.sidebar.selectbox(
     "Department",
@@ -137,6 +141,7 @@ st.metric("ECNs Open", len(df[df["ECN Status"]=="Open"]))
 st.metric("ECNs ongoing Approval ", len(df[df["ECN Status"]=="ECR-Sign off Ongoing"]))
 st.metric("ECNs upcoming ", len(df[df["ECN Status"]=="—"]))
 st.metric("ECNs closed ", len(df[df["ECN Status"]=="closed"]))
+st.metric("ECNs release pending and approval done", len(df[df["ECN Status"]=="ECR Approval Complete"]))
 
 filtered_df["Target Date"] = pd.to_datetime(
     filtered_df["Target Date"],
