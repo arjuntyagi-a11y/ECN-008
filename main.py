@@ -119,7 +119,8 @@ Open = st.sidebar.selectbox(
 
 # Apply filters
 filtered_df = df.copy()
-
+if Year != "All"
+    filtered_df = filtered_df[filtered_df["Year"] == Year]
 if dept != "All":
     filtered_df = filtered_df[filtered_df["Dept"] == dept]
 
